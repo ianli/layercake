@@ -10,6 +10,7 @@ Requirements
 ------------
 
 Requires the following Javascript libraries:
+
 - [jQuery](http://jquery.com/) for DOM manipulation
 - [Underscore.js](http://documentcloud.github.com/underscore/) for utility functions
 
