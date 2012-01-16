@@ -14,14 +14,16 @@
 ;(function($, _, undefined) {
   
 	var LayerCake = function(selector, opts) {
-		// Use `self` to refer to this object to reduce confusion.
-		var self = this;
+		    // Use `self` to refer to this object to reduce confusion.
+		var self = this,
 		
-		// Options (cloned from the passed options)
-		var options = _.clone(opts);
+		    // Options (cloned from the passed options)
+		    options = _.clone((typeof opts === 'undefined') ? {} : opts),
 		
+		    // The default date used if date is not specified in `opts`
+		    defaultDate = new Date();
+		    
 		// Set defaults for options.
-		var defaultDate = new Date();
 		_.defaults(options, {
 			range: "day",
 			year: defaultDate.getFullYear(),
