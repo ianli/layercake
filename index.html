@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>LayerCake, a quick-to-use calendar/date picker</title>
+  
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" />
+  
+  <link rel="stylesheet" href="stylesheets/layercake.css" />
+  
+  <style type="text/css">
+    section {
+      padding-top:40px;
+    }
+    section > .row {
+      padding-bottom:20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" data-scrollspy="scrollspy">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="/layercake/">LayerCake</a>
+      <ul class="nav">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="top" style="padding-top:60px;">
+  <div class="row">
+    <div class="span16">
+      <h1>LayerCake <small>A quick-to-use calendar/date picker</small></h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <section id="about">
+    <div class="page-header">
+      <h1>About LayerCake <small>A short introduction</small></h1>
+    </div>
+    <div class="row">
+      <div class="span16">
+        <p>
+          LayerCake is a calendar/date picker that allows separate selection of year, month, and date.
+        </p>
+      
+        <p>
+          Most calendar pickers support selection of month and year together (_e.g._, "April 2011"). This means that if "April 2011" is currently selected and the user wants "December 2011", the user has to click 8 times. With LayerCake, the user only has to click twice: (1) select the month and (2) select the year. In cases where the current selection differs from the desired selection by either the month or the year, the user only has to click once.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="setup">
+    <div class="page-header">
+      <h1>Setup <small>Preparation is a cinch!</small></h1>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h2>Dependencies</h2>
+        <p>
+          LayerCake requires <a href="http://jquery.com">jQuery</a>
+          and <a href="http://documentcloud.github.com/underscore/">Underscore</a>.
+          To start, you need to include the necessary files.
+        </p>
+      </div>
+    
+      <div class="span12">
+        <h3>Include the CSS stylesheet</h3>
+        
+        <p>
+          LayerCake provides a default stylesheet in the GitHub repository.
+          You may include this stylesheet in the <code>head</code> tag.
+        </p>
+        
+        <pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/layercake.css&quot; /&gt;</pre>
+        
+        <h3>Include Javascript files</h3>
+      
+        <p>
+          In the example below, we use the jQuery from the Google CDN.
+          The code for Underscore and LayerCake are included in the GitHub repository.
+        </p>
+      
+        <pre>&lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;javascripts/underscore-1.3.0.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;javascripts/layercake.js&quot;&gt;&lt;/script&gt;</pre>
+
+      </div>
+    </div>
+  </section>
+  
+  <section id="examples">
+    <div class="page-header">
+      <h1>Examples <small>Bite-sized samples</small></h1>
+    </div>
+    <div class="row">
+      <div class="span4" style="padding-top:18px;">
+        <div id="example1" class="layercake"></div>
+      </div>
+      <div class="span12">
+        <h3>Basic Example</h3>
+        
+<pre>&lt;div id=&quot;example1&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  $(function () {
+    var example1 = new LayerCake(&#x27;#example1&#x27;);
+  });
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4" style="padding-top:18px;">
+        <div id="example2" class="layercake"></div>
+      </div>
+      <div class="span12">
+        <h3>Example with Specified Date</h3>
+        
+<pre>&lt;div id=&quot;example2&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  $(function () {
+    var example2 = new LayerCake(&#x27;#example2&#x27;, {
+      range: &#x27;day&#x27;,
+      year: 2011,
+      month: 10,  // November, based on 0-indexed month
+      day: 11
+    });
+  });
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p>
+      &copy; 2012 <a href="http://ianli.com">Ian Li</a>.
+      Licensed under <a href="http://www.opensource.org/licenses/mit-license.php">the MIT License</a>.
+    </p> 
+  </footer>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="javascripts/underscore-1.3.0.js"></script>
+<script type="text/javascript" src="javascripts/layercake.js"></script>
+<script type="text/javascript">
+  $(function () {
+    var example1 = new LayerCake('#example1');
+    
+    var example2 = new LayerCake('#example2', {
+      range: 'day',
+      year: 2011,
+			month: 10,  // November, based on 0-indexed month
+			day: 11
+    });
+  });
+</script>
+
+<!-- Auto-update the Bootstrap topbar navigation -->
+<script type="text/javascript" src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-scrollspy.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/*!
+ * Default stylesheet for LayerCake
+ * 
+ * Copyright 2011 Ian Li, http://ianli.com
+ * Licensed under the MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+ 
+.layercake {
+	width:180px;
+	font-size:11px;
+	background-color:#fff;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+	/* Add this so that it wraps around its content */
+	.layercake:after {
+		content:"\0020";
+		display:block;
+		height:0;
+		clear:both;
+		visibility:hidden;
+		overflow:hidden;
+	}
+.layercake ._ranges,
+.layercake ._yearsrow,
+.layercake ._months,
+.layercake ._daynames,
+.layercake ._days {
+	clear:both;
+	float:left;
+	width:100%;
+	border-bottom:1px solid #ccc;
+}
+	.layercake ._daynames {
+		color:#999;
+		border-bottom:none;
+	}
+.layercake ._range,
+.layercake ._year,
+.layercake ._month,
+.layercake ._dayname,
+.layercake ._day,
+.layercake ._prev,
+.layercake ._next {
+	float:left;
+	padding:2px 0 3px;
+	line-height:1em;
+	text-align:center;
+}
+	.layercake ._range:hover,
+	.layercake ._year:hover,
+	.layercake ._month:hover,
+	.layercake ._day:hover {
+		background-color:#44A9EB;
+		color:#fff;
+		cursor:pointer;
+	}
+	.layercake ._day.empty:hover {
+		background-color:transparent;
+		cursor:default;
+	}
+	.layercake ._range.selected,
+	.layercake ._year.selected,
+	.layercake ._month.selected,
+	.layercake ._day.selected {
+		background-color:#44A9EB;
+		color:#fff;
+	}
+.layercake ._select {
+	clear:both;
+	padding:2px 3px;
+	cursor:pointer;
+	text-align:center;
+	font-weight:bold;
+}
+	.layercake ._select:hover {
+		background-color:#44A9EB;
+		color:#fff;
+	}
+.layercake ._years {
+	float:left;
+}
+	.layercake ._prev:hover,
+	.layercake ._next:hover {
+		background-color:#44A9EB;
+		color:#fff;
+	}
+	.layercake ._prev { float:left; border-right:1px solid #ccc; }
+	.layercake ._next { float:right; border-left:1px solid #ccc; }
+/* Widths */
+.layercake ._range { width:45px; }
+.layercake ._year { width:46px; }
+.layercake ._prev,
+.layercake ._next { width:20px; cursor:pointer; }
+.layercake ._month { width:15px; }
+.layercake ._dayname { width:25px; }
+.layercake ._day { width:25px; }
+/* Colors */
+.layercake ._ranges,
+.layercake ._prev,
+.layercake ._next,
+.layercake ._years,
+.layercake ._yearsrow,
+.layercake ._months,
+.layercake ._days { border-color:#ccc; }
