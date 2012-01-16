@@ -27,8 +27,7 @@
 .layercake ._ranges,
 .layercake ._yearsrow,
 .layercake ._months,
-.layercake ._daynames,
-.layercake ._days {
+.layercake ._daynames {
 	clear:both;
 	float:left;
 	width:100%;

@@ -21,6 +21,9 @@
     section > .row {
       padding-bottom:20px;
     }
+    #examples .span4 {
+      padding-top:18px;
+    } 
   </style>
 </head>
 <body>
@@ -40,10 +43,11 @@
 </div>
 
 <div class="container" id="top" style="padding-top:60px;">
-  <div class="row">
-    <div class="span16">
-      <h1>LayerCake <small>A quick-to-use calendar/date picker</small></h1>
+  <div class="hero-unit">
+    <div class="pull-right layercake" id="layercake-hero-unit" style="margin-top:-25px;">
     </div>
+    <h1>LayerCake</h1>
+    <p>A quick-to-use calendar/date picker</p>
   </div>
 </div>
 
@@ -109,14 +113,17 @@
     <div class="page-header">
       <h1>Examples <small>Bite-sized samples</small></h1>
     </div>
+    
+    <!-- Example 1 -->
     <div class="row">
-      <div class="span4" style="padding-top:18px;">
+      <div class="span4">
         <div id="example1" class="layercake"></div>
       </div>
       <div class="span12">
-        <h3>Basic Example</h3>
+        <h3>Basic initialization</h3>
         
 <pre>&lt;div id=&quot;example1&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+
 &lt;script type=&quot;text/javascript&quot;&gt;
   $(function () {
     var example1 = new LayerCake(&#x27;#example1&#x27;);
@@ -124,14 +131,17 @@
 &lt;/script&gt;</pre>
       </div>
     </div>
+    
+    <!-- Example 2 -->
     <div class="row">
-      <div class="span4" style="padding-top:18px;">
+      <div class="span4">
         <div id="example2" class="layercake"></div>
       </div>
       <div class="span12">
-        <h3>Example with Specified Date</h3>
+        <h3>Setting the initial date</h3>
         
 <pre>&lt;div id=&quot;example2&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+
 &lt;script type=&quot;text/javascript&quot;&gt;
   $(function () {
     var example2 = new LayerCake(&#x27;#example2&#x27;, {
@@ -140,6 +150,79 @@
       month: 10,  // November, based on 0-indexed month
       day: 11
     });
+  });
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+    
+    <!-- Example 3 -->
+    <div class="row">
+      <div class="span4">
+        <p>
+          <button id="example3-year" class="btn">Year</button>
+          <button id="example3-month" class="btn">Month</button>
+          <button id="example3-day" class="btn">Day</button>
+        </p>
+        <div id="example3" class="layercake"></div>
+      </div>
+      <div class="span12">
+        <h3>Setting the range</h3>
+        
+<pre>&lt;p&gt;
+  &lt;button id=&quot;example3-year&quot; class=&quot;btn&quot;&gt;Year&lt;/button&gt;
+  &lt;button id=&quot;example3-month&quot; class=&quot;btn&quot;&gt;Month&lt;/button&gt;
+  &lt;button id=&quot;example3-day&quot; class=&quot;btn&quot;&gt;Day&lt;/button&gt;
+&lt;/p&gt;
+&lt;div id=&quot;example3&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var example3 = new LayerCake(&#x27;#example3&#x27;, {
+    range: &#x27;year&#x27; // Default is 'day'
+  });
+  $(&#x27;#example3-year&#x27;).click(function () {
+    example3.set({ range: &#x27;year&#x27; });
+  });
+  $(&#x27;#example3-month&#x27;).click(function () {
+    example3.set({ range: &#x27;month&#x27; });
+  });
+  $(&#x27;#example3-day&#x27;).click(function () {
+    example3.set({ range: &#x27;day&#x27; });
+  });
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+    
+    <!-- Example 4 -->
+    <div class="row">
+      <div class="span4">
+        <p>
+          <button class="btn" id="example4-btn">Show Range Selector</button>
+        </p>
+        <div id="example4" class="layercake"></div>
+      </div>
+      <div class="span12">
+        <h3>Showing the range selector</h3>
+        
+<pre>&lt;p&gt;
+  &lt;button class=&quot;btn&quot; id=&quot;example4-btn&quot;&gt;Show Range Selector&lt;/button&gt;
+&lt;/p&gt;
+&lt;div id=&quot;example4&quot; class=&quot;layercake&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var example4 = new LayerCake(&#x27;#example4&#x27;, {
+    showRangeSelector: false  // Default is true
+  });
+  
+  $(&#x27;#example4-btn&#x27;).click(function () {
+    if (example4.options.showRangeSelector) {
+      example4.set({ showRangeSelector: false });
+      $(this).html(&#x27;Show Range Selector&#x27;)
+        .removeClass(&#x27;danger&#x27;);
+    } else {
+      example4.set({ showRangeSelector: true });
+      $(this).html(&#x27;Hide Range Selector&#x27;)
+        .addClass(&#x27;danger&#x27;);
+    }
   });
 &lt;/script&gt;</pre>
       </div>
@@ -154,11 +237,14 @@
   </footer>
 </div>
 
+<!-- Javascript -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 <script type="text/javascript" src="javascripts/underscore-1.3.0.js"></script>
 <script type="text/javascript" src="javascripts/layercake.js"></script>
 <script type="text/javascript">
   $(function () {
+    var layerCakeHeroUnit = new LayerCake('#layercake-hero-unit');
+    
     var example1 = new LayerCake('#example1');
     
     var example2 = new LayerCake('#example2', {
@@ -166,6 +252,35 @@
       year: 2011,
 			month: 10,  // November, based on 0-indexed month
 			day: 11
+    });
+    
+    var example3 = new LayerCake('#example3', {
+      range: 'year' // Default is 'day'
+    });
+    $('#example3-year').click(function () {
+      example3.set({ range: 'year' });
+    });
+    $('#example3-month').click(function () {
+      example3.set({ range: 'month' });
+    });
+    $('#example3-day').click(function () {
+      example3.set({ range: 'day' });
+    });
+    
+    var example4 = new LayerCake('#example4', {
+      showRangeSelector: false  // Default is true
+    });
+    
+    $('#example4-btn').click(function () {
+      if (example4.options.showRangeSelector) {
+        example4.set({ showRangeSelector: false });
+        $(this).html('Show Range Selector')
+          .removeClass('danger');
+      } else {
+        example4.set({ showRangeSelector: true });
+        $(this).html('Hide Range Selector')
+          .addClass('danger');
+      }
     });
   });
 </script>

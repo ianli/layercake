@@ -14,7 +14,7 @@
 ;(function($, _, undefined) {
   
 	var LayerCake = function(selector, opts) {
-		    // Use `self` to refer to this object to reduce confusion.
+		// Use `self` to refer to this object to reduce confusion.
 		var self = this,
 		
 		    // Options (cloned from the passed options)
@@ -29,6 +29,7 @@
 			year: defaultDate.getFullYear(),
 			month: defaultDate.getMonth(),
 			day: defaultDate.getDate(),
+			showRangeSelector: true,
 			confirmSelect: false,
 			selected: function() {
 				// Do nothing when the select button is clicked.
@@ -60,26 +61,26 @@
 		// -----------
 					
 		// Create base HTML.
-		$el.html(
-			'<div class="_ranges"></div>'
-			+ '<div class="_yearsrow">'
-				+ '<div class="_prev">&laquo;</div>'
-				+ '<div class="_years"></div>'
-				+ '<div class="_next">&raquo;</div>'
-				+ '<div style="clear:both;"></div>'
-			+ '</div>'
-			+ '<div class="_months"></div>'
-			+ '<div class="_daynames">'
-			+ '<div class="_dayname">Su</div>'
-			+ '<div class="_dayname">M</div>'
-			+ '<div class="_dayname">T</div>'
-			+ '<div class="_dayname">W</div>'
-			+ '<div class="_dayname">Th</div>'
-			+ '<div class="_dayname">F</div>'
-			+ '<div class="_dayname">Sa</div>'
-			+ '</div>'
-			+ '<div class="_days"></div>'
-		);
+		$el.html('\
+		  <div class="_ranges"></div> \
+		  <div class="_yearsrow"> \
+			  <div class="_prev">&laquo;</div> \
+			  <div class="_years"></div> \
+			  <div class="_next">&raquo;</div> \
+			  <div style="clear:both;"></div> \
+		  </div> \
+		  <div class="_months"></div> \
+		  <div class="_daynames"> \
+  		  <div class="_dayname">Su</div> \
+  		  <div class="_dayname">M</div> \
+  		  <div class="_dayname">T</div> \
+  		  <div class="_dayname">W</div> \
+  		  <div class="_dayname">Th</div> \
+  		  <div class="_dayname">F</div> \
+  		  <div class="_dayname">Sa</div> \
+		  </div> \
+		  <div class="_days"></div> \
+		');
 		
 		// Add select button.
 		if (options.confirmSelect) {
@@ -89,7 +90,6 @@
 					triggerSelect(true);
 				});
 		}
-		
 	
 		// Add ranges buttons.
 		var $ranges = $el.find("._ranges");
@@ -157,22 +157,24 @@
 		// Methods
 		// -------
 		
-		// Sets the range, year, month, and day of this view.
-		var set = function(range, year, month, day) {
-			options.range = range;
-			options.year = year;
-			options.month = month;
-			options.day = day;
-			
+		// Sets the properties on this calendar.
+		var set = function(newOptions) {
+		  _.extend(options, newOptions);
+		  
+		  if (typeof newOptions.year !== 'undefined') {
+		    // The first year to show
+  			viewStartYear = newOptions.year - viewNumYears + 1;
+		  }
+		  
 			// Update the view.
 			update();
-		}
+		};
 		
 		var triggerSelect = function(confirm) {
 			if (confirm || !options.confirmSelect) {
 				options.selected.call(self);
 			}
-		}
+		};
 		
 		// Updates the whole view.
 		// `which` specifies which aspects of the view to update.
@@ -195,21 +197,24 @@
 				// Hide or show months and days depending on range.
 				if (options.range === "year") {
 					$el.find("._months").hide();
+					$el.find("._daynames").hide();
 					$el.find("._days").hide();
 				} else if (options.range === "month") {
 					$el.find("._months").show();
+					$el.find("._daynames").hide();
 					$el.find("._days").hide();
 				} else {
 					$el.find("._months").show();
+					$el.find("._daynames").show();
 					$el.find("._days").show();
 				}
 			} 
 			
 			if (which.match("year")) {
 				// Update the view's starting year.
-				if (options.year < viewStartYear || viewStartYear + viewNumYears <= options.year) {
-					viewStartYear = options.year - viewNumYears + 1;
-				}
+        //if (options.year < viewStartYear || viewStartYear + viewNumYears <= options.year) {
+				//	viewStartYear = options.year - viewNumYears + 1;
+        //}
 
 				// Update the year that is selected.
 				$el.find("._year")
@@ -249,9 +254,16 @@
 						}
 					});
 			}
-		}
+			
+			// Show/hide the range selector.
+  		if (options.showRangeSelector) {
+  		  $el.find('._ranges').show();
+  		} else {
+  		  $el.find('._ranges').hide();
+  		}
+		};
 		
-		function updateGrid() {
+		var updateGrid = function () {
 			var yy = options.year,
 				mm = options.month;
 			
@@ -296,6 +308,8 @@
 		// Update the view.
 		update();
 	};
+	
+	LayerCake.VERSION = '0.2.0';
 	
 	window.LayerCake = LayerCake;
 })(jQuery, _);
