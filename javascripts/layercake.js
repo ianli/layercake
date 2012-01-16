@@ -11,7 +11,8 @@
 
 // Adding the semicolon is recommended;
 // prevents errors when minifying plugins together.
-;(function($) {
+;(function($, _, undefined) {
+  
 	var LayerCake = function(selector, opts) {
 		// Use `self` to refer to this object to reduce confusion.
 		var self = this;
@@ -292,7 +293,7 @@
 		
 		// Update the view.
 		update();
-	}
+	};
 	
 	window.LayerCake = LayerCake;
-})(jQuery);
+})(jQuery, _);
