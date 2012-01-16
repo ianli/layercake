@@ -36,8 +36,13 @@ For more information on SemVer, please visit http://semver.org/.
 Change Log
 ----------
 
-__0.1.0__ -- October 26, 2010  
-Initial release of LayerCake, formerly LayerCal.
+__0.2.0__ -- January 16, 2012
+
+- Added showRangeSelector
+
+__0.1.0__ -- October 26, 2011
+
+- Initial release of LayerCake, formerly LayerCal.
 
 
 License
