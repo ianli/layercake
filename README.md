@@ -8,5 +8,5 @@ Most calendar pickers support selection of month and year together (_e.g._, "Apr
 License
 -------
 
-Copyright (c) 2011 Ian Li, http://ianli.com
+Copyright (c) 2011 Ian Li, http://ianli.com  
 Licensed under [the MIT license](http://www.opensource.org/licenses/mit-license.php).
