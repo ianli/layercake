@@ -1,5 +1,6 @@
 /*!
  * LayerCake, a quick-to-use calendar/date picker
+ * http://ianli.github.com/layercake/
  * 
  * Copyright 2011 Ian Li, http://ianli.com
  * Licensed under the MIT License (http://www.opensource.org/licenses/mit-license.php)
