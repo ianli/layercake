@@ -155,8 +155,18 @@
 				.appendTo($days);
 		}
 		
+		
 		// Methods
 		// -------
+		
+		// Gets the property specified by `propertyName`.
+		var get = function(propertyName) {
+		  if (typeof options[propertyName] === 'undefined') {
+		    return null;
+		  } else {
+		    return options[propertyName];
+		  }
+		};
 		
 		// Sets the properties on this calendar.
 		var set = function(newOptions) {
@@ -301,9 +311,9 @@
 			});
 		}
 		
-		// Expose the following properties...
-		self.options = options;
+		// Expose the following methods:
 		self.update = update;
+		self.get = get;
 		self.set = set;
 		
 		// Update the view.

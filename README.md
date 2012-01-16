@@ -38,7 +38,8 @@ Change Log
 
 __0.2.0__ -- January 16, 2012
 
-- Added showRangeSelector
+- Added `showRangeSelector` property. 
+- Added `get` method.
 
 __0.1.0__ -- October 26, 2011
 

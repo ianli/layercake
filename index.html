@@ -212,9 +212,9 @@
   var example4 = new LayerCake(&#x27;#example4&#x27;, {
     showRangeSelector: false  // Default is true
   });
-  
+
   $(&#x27;#example4-btn&#x27;).click(function () {
-    if (example4.options.showRangeSelector) {
+    if (example4.get(&#x27;showRangeSelector&#x27;)) {
       example4.set({ showRangeSelector: false });
       $(this).html(&#x27;Show Range Selector&#x27;)
         .removeClass(&#x27;danger&#x27;);
@@ -272,7 +272,7 @@
     });
     
     $('#example4-btn').click(function () {
-      if (example4.options.showRangeSelector) {
+      if (example4.get('showRangeSelector')) {
         example4.set({ showRangeSelector: false });
         $(this).html('Show Range Selector')
           .removeClass('danger');
